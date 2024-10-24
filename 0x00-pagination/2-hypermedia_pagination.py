@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Hypermedia pagination task2"""
-
+"""
+Hypermedia pagination
+"""
 import csv
 import math
 from typing import Tuple, List, Dict, Any
@@ -8,8 +9,13 @@ from typing import Tuple, List, Dict, Any
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
-    get_hyper method that takes the same arguments
-    (and defaults) as get_page and returns a dictionary 
+    return a tuple of size two containing a start
+     index and an end index corresponding to the
+     range of indexes to return in a list for
+     those particular pagination parameters
+    :param page:
+    :param page_size:
+    :return:
     """
     start_index = (page - 1) * page_size
     end_index = start_index + page_size
@@ -17,7 +23,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
 
 
 class Server:
-    """paginate database of popular baby names.
+    """Server class to paginate a database of popular baby names.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -37,7 +43,10 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        correct database image sets
+        Find the correct indexes to paginate dataset
+        :param page:
+        :param page_size:
+        :return:
         """
         assert type(page) == int
         assert type(page_size) == int
@@ -52,7 +61,10 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
-        returns a dictionary
+        Return dataset as a dictionary
+        :param page:
+        :param page_size:
+        :return:
         """
         total_pages = math.ceil(len(self.dataset()) / page_size)
         return {
