@@ -9,7 +9,11 @@ from typing import Tuple, List, Dict, Any
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     get_hyper method that takes the same arguments
-    (and defaults) as get_page and returns a dictionary 
+    (and defaults) as get_page and returns a dictionary
+    :param page:
+    :param page_size:
+    :return:
+
     """
     start_index = (page - 1) * page_size
     end_index = start_index + page_size
@@ -38,6 +42,9 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
         correct database image sets
+        :param page:
+        :param page_size:
+        :return:
         """
         assert type(page) == int
         assert type(page_size) == int
@@ -53,6 +60,10 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
         returns a dictionary
+        :param page:
+        :param page_size:
+        :return:
+
         """
         total_pages = math.ceil(len(self.dataset()) / page_size)
         return {

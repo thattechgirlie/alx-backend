@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Deletion-resilient hypermedia pagination
+Deletion
 """
 
 import csv
-import math
 from typing import List
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
+    """
+    Server class to paginate a database of popular baby names.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -18,7 +18,8 @@ class Server:
         self.__indexed_dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
+        """
+        Cached dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -29,7 +30,8 @@ class Server:
         return self.__dataset
 
     def indexed_dataset(self) -> Dict[int, List]:
-        """sorting of dataset starting at 0
+        """
+        sorting of dataset starting at 0
         """
         if self.__indexed_dataset is None:
             dataset = self.dataset()
@@ -41,7 +43,10 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
-       return dictionary with key-value pairs
+        return dictionary with key-value pairs
+        :param page:
+        :param page_size:
+        :return:
         """
         assert type(index) == int
         assert type(page_size) == int
